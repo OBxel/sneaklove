@@ -13,6 +13,7 @@ const session = require("express-session");
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo")(session);
 const cookieParser = require("cookie-parser");
+const flash = require('connect-flash')
 
 // initial config
 app.set("view engine", "hbs");
@@ -77,6 +78,17 @@ function eraseSessionMessage() {
 
 app.use(checkloginStatus);
 app.use(eraseSessionMessage());
+app.use(flash())
+app.use((req, res, next) => {
+  console.log(req.session.currentUser, "logged");
+  if (req.session.currentUser) {
+    res.locals.isLoggedIn = true;
+  } else {
+    res.locals.isLoggedIn = false;
+  }
+  next();
+});
+
 
 // Getting/Using router(s)
 const basePageRouter = require("./routes/index");
