@@ -15,7 +15,7 @@ router.post("/signin", (req, res, next) => {
         email,
         password
     } = req.body;
-    console.log(req.body)
+
     Users.findOne({
             email: email,
         })
@@ -51,7 +51,6 @@ router.post("/signup", (req, res, next) => {
         email,
         password
     } = req.body;
-    console.log(req.body);
 
     Users.findOne({
             email: email,
