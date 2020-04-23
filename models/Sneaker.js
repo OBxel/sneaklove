@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+
 const sneakerSchema = new mongoose.Schema({
     name: String,
     ref: String,
@@ -14,7 +15,7 @@ const sneakerSchema = new mongoose.Schema({
             "kids",
         ],
     },
-    id_tags: [Schema.Types.ObjectId],
+    id_tags: [],
 })
 
 const Sneaker = mongoose.model("Sneaker", sneakerSchema)
