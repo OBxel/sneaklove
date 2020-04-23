@@ -15,7 +15,10 @@ const sneakerSchema = new mongoose.Schema({
             "kids",
         ],
     },
-    id_tags: [],
+    id_tags: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tag'
+    }]
 })
 
 const Sneaker = mongoose.model("Sneaker", sneakerSchema)
