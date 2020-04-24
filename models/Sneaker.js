@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const sneakerSchema = new mongoose.Schema({
     name: String,
     ref: String,
+    image: String,
     size: Number,
     description: String,
     price: Number,
