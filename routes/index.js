@@ -8,11 +8,10 @@ router.get("/", (req, res) => {
 
 router.get("/sneakers/:cat", (req, res) => {
   console.log(req.params);
-  const cat = req.params.id;
-  Sneaker.find(cat)
+  Sneaker.find(req.params.id)
     .populate("id_tags")
     .then(dbResult => {
-      res.render("/products_manage.hbs", {
+      res.render("products.hbs", {
         sneakers: dbResult,
 
       });
