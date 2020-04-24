@@ -82,6 +82,7 @@ app.use(flash())
 app.use((req, res, next) => {
   console.log(req.session.currentUser, "logged");
   if (req.session.currentUser) {
+    res.locals.user = req.session.currentUser;
     res.locals.isLoggedIn = true;
   } else {
     res.locals.isLoggedIn = false;
@@ -95,6 +96,7 @@ const basePageRouter = require("./routes/index");
 app.use("/", basePageRouter);
 app.use("/", require("./routes/dashboard_sneaker"));
 app.use("/", require("./routes/auth"));
+app.use("/", require("./routes/user"));
 
 const listener = app.listen(process.env.PORT, () => {
   console.log(`app started at ${process.env.SITE_URL}:${process.env.PORT}`);
